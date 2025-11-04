@@ -154,6 +154,41 @@ main() {
 
     print_success "Plugins installed successfully"
 
+    # AI Assistant Setup
+    print_header "AI CODING ASSISTANTS SETUP"
+    echo ""
+    print_info "Do you want to set up AI coding assistants?"
+    echo ""
+    echo "  AI assistants can help you code faster with:"
+    echo "    • Auto-completion (like GitHub Copilot)"
+    echo "    • Code generation and explanation"
+    echo "    • Bug fixes and code reviews"
+    echo ""
+    echo "  Available options:"
+    echo "    • Codeium (Free, Cloud-based) - Recommended for beginners"
+    echo "    • Ollama (Free, Local) - Best for privacy"
+    echo "    • GitHub Copilot (Paid)"
+    echo "    • Multiple AI backends (Claude, ChatGPT, Gemini, etc.)"
+    echo ""
+
+    read -p "$(echo -e ${YELLOW}Would you like to set up AI assistants now? [y/N]: ${NC})" setup_ai
+    setup_ai=${setup_ai:-n}
+
+    if [[ "$setup_ai" =~ ^[Yy]$ ]]; then
+        echo ""
+        SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+        if [ -f "$SCRIPT_DIR/scripts/setup-ai-assistant.sh" ]; then
+            print_info "Launching AI assistant setup..."
+            bash "$SCRIPT_DIR/scripts/setup-ai-assistant.sh"
+        else
+            print_warning "AI setup script not found"
+            print_info "You can run it manually later: ./scripts/setup-ai-assistant.sh"
+        fi
+    else
+        print_info "Skipping AI setup (you can run it later: ./scripts/setup-ai-assistant.sh)"
+    fi
+
     # Final message
     print_header "INSTALLATION COMPLETE!"
     echo ""
@@ -169,11 +204,31 @@ main() {
     echo "    :Mason         - Install/manage LSP servers"
     echo "    :Lazy          - Manage plugins"
     echo "    :checkhealth   - Check installation health"
+    echo "    :VimLogs       - Open log directory"
+    echo "    :VimLogStats   - Show log statistics"
+    echo ""
+    echo "  Logging:"
+    echo "    • All logs saved to: ~/.vim-logs/"
+    echo "    • Errors shown only if they occur"
+    echo "    • Clean startup with no spam!"
+    echo ""
+    echo "  AI Assistants:"
+    if [[ "$setup_ai" =~ ^[Yy]$ ]]; then
+        echo "    • AI assistants configured!"
+        echo "    • See docs/AI_ASSISTANTS.md for usage"
+    else
+        echo "    • Run: ./scripts/setup-ai-assistant.sh (anytime)"
+        echo "    • See docs/AI_ASSISTANTS.md for details"
+    fi
     echo ""
     echo "  Documentation:"
-    echo "    docs/INSTALLATION.md    - Installation guide"
-    echo "    docs/KEYBINDINGS.md     - Keybindings reference"
-    echo "    docs/languages/         - Language-specific guides"
+    echo "    docs/INSTALLATION.md      - Installation guide"
+    echo "    docs/KEYBINDINGS.md       - Keybindings reference"
+    echo "    docs/AI_ASSISTANTS.md     - AI setup guide"
+    echo "    docs/languages/           - Language-specific guides"
+    echo ""
+    echo "  Uninstall:"
+    echo "    ./uninstall.sh            - Complete removal script"
     echo ""
     echo "  Quick start:"
     echo "    <Space>         - Show available commands"
