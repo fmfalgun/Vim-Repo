@@ -3,12 +3,16 @@
   WHICH-KEY CONFIGURATION
 ================================================================================
   Displays available keybindings in a popup
+  Updated for which-key v3.0+ API
 ================================================================================
 --]]
 
 local wk = require("which-key")
 
+-- Setup which-key with v3.0+ configuration
 wk.setup({
+  preset = "modern",
+  delay = 500,
   plugins = {
     marks = true,
     registers = true,
@@ -26,12 +30,9 @@ wk.setup({
       g = true,
     },
   },
-  window = {
+  win = {
     border = "rounded",
-    position = "bottom",
-    margin = { 1, 0, 1, 0 },
     padding = { 2, 2, 2, 2 },
-    winblend = 0,
   },
   layout = {
     height = { min = 4, max = 25 },
@@ -41,23 +42,19 @@ wk.setup({
   },
   show_help = true,
   show_keys = true,
-  triggers = "auto",
-  triggers_blacklist = {
-    i = { "j", "k" },
-    v = { "j", "k" },
-  },
 })
 
--- Register key groups
-wk.register({
-  ["<leader>f"] = { name = "+find/telescope" },
-  ["<leader>g"] = { name = "+git" },
-  ["<leader>d"] = { name = "+debug" },
-  ["<leader>c"] = { name = "+code" },
-  ["<leader>b"] = { name = "+buffer" },
-  ["<leader>t"] = { name = "+toggle/tab/terminal" },
-  ["<leader>s"] = { name = "+split/session" },
-  ["<leader>w"] = { name = "+workspace" },
-  ["<leader>x"] = { name = "+diagnostics/trouble" },
-  ["<leader>h"] = { name = "+git hunks" },
+-- Register key groups (v3.0+ format)
+wk.add({
+  { "<leader>f", group = "find/telescope" },
+  { "<leader>g", group = "git" },
+  { "<leader>d", group = "debug" },
+  { "<leader>c", group = "code" },
+  { "<leader>b", group = "buffer" },
+  { "<leader>t", group = "toggle/tab/terminal" },
+  { "<leader>s", group = "split/session" },
+  { "<leader>w", group = "workspace" },
+  { "<leader>x", group = "diagnostics/trouble" },
+  { "<leader>h", group = "git hunks" },
+  { "<leader>a", group = "AI assistant" },
 })

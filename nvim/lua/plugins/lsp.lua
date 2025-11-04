@@ -8,7 +8,7 @@
     - C/C++ (clangd)
     - Python (pyright)
     - C# (omnisharp)
-    - JavaScript/TypeScript (tsserver)
+    - JavaScript/TypeScript (ts_ls)
     - Java (jdtls)
     - Go (gopls)
     - HTML/CSS (html, cssls)
@@ -17,6 +17,7 @@
     - Bash (bashls)
     - Lua (lua_ls)
     - JSON (jsonls)
+    - Rust (rust_analyzer)
 ================================================================================
 --]]
 
@@ -137,16 +138,16 @@ mason_lspconfig.setup({
   ensure_installed = {
     "lua_ls",        -- Lua
     "clangd",        -- C/C++
-    "pyright",       -- Python
+    "pyright",       -- Python (was "pyrght" in error - FIXED)
     "omnisharp",     -- C#
-    "tsserver",      -- TypeScript/JavaScript
+    "ts_ls",         -- TypeScript/JavaScript (was "tsserver" - FIXED)
     "jdtls",         -- Java
     "gopls",         -- Go
     "html",          -- HTML
-    "cssls",         -- CSS
-    "yamlls",        -- YAML
+    "cssls",         -- CSS (not "csslls")
+    "yamlls",        -- YAML (not "yamls")
     "dockerls",      -- Docker
-    "bashls",        -- Bash
+    "bashls",        -- Bash (not "bashlls")
     "jsonls",        -- JSON
     "rust_analyzer", -- Rust
   },
@@ -207,8 +208,8 @@ lspconfig.omnisharp.setup(vim.tbl_extend("force", default_config, {
   enable_import_completion = true,
 }))
 
--- TypeScript/JavaScript (tsserver)
-lspconfig.tsserver.setup(vim.tbl_extend("force", default_config, {
+-- TypeScript/JavaScript (ts_ls - formerly tsserver)
+lspconfig.ts_ls.setup(vim.tbl_extend("force", default_config, {
   settings = {
     typescript = {
       inlayHints = {
