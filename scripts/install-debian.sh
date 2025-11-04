@@ -168,9 +168,14 @@ sudo apt-get install -y \
 # Rust (optional but recommended)
 print_info "Installing Rust..."
 if ! command -v rustc &> /dev/null; then
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-    source "$HOME/.cargo/env"
-    print_success "Rust installed"
+    if curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y; then
+        source "$HOME/.cargo/env" 2>/dev/null || true
+        print_success "Rust installed"
+    else
+        echo -e "${YELLOW}[WARNING]${NC} Rust installation failed (network timeout or error)"
+        echo -e "${BLUE}[INFO]${NC} Rust is optional - continuing installation..."
+        echo -e "${BLUE}[INFO]${NC} You can install Rust later with: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"
+    fi
 else
     print_success "Rust already installed"
 fi
@@ -178,12 +183,18 @@ fi
 # Install LazyGit (modern git UI)
 print_info "Installing LazyGit..."
 if ! command -v lazygit &> /dev/null; then
-    LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
-    curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-    tar xf lazygit.tar.gz lazygit
-    sudo install lazygit /usr/local/bin
-    rm lazygit lazygit.tar.gz
-    print_success "LazyGit installed"
+    if LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*') && \
+       curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz" && \
+       tar xf lazygit.tar.gz lazygit && \
+       sudo install lazygit /usr/local/bin; then
+        rm -f lazygit lazygit.tar.gz
+        print_success "LazyGit installed"
+    else
+        rm -f lazygit lazygit.tar.gz 2>/dev/null || true
+        echo -e "${YELLOW}[WARNING]${NC} LazyGit installation failed (network timeout or error)"
+        echo -e "${BLUE}[INFO]${NC} LazyGit is optional - continuing installation..."
+        echo -e "${BLUE}[INFO]${NC} You can install LazyGit later from: https://github.com/jesseduffield/lazygit"
+    fi
 else
     print_success "LazyGit already installed"
 fi
