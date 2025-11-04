@@ -1,171 +1,336 @@
-# My Vim Configuration
+# 🚀 Modern Neovim Configuration
 
-> "In a world where you can be anything, be a terminal wizard."
+> **A production-ready, fully-featured Neovim setup for full-stack development**
 
-Welcome to my Vim configuration! 🎉 This setup is designed to make Vim not just powerful, but a joy to use. Let's dive into what makes this configuration special.
+[![Neovim](https://img.shields.io/badge/Neovim-0.9+-green.svg)](https://neovim.io/)
+[![Lua](https://img.shields.io/badge/Lua-5.1+-blue.svg)](https://www.lua.org/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## Key Features
+Transform your Neovim into a powerful IDE with support for **C, C++, Python, C#, JavaScript, Java, Go, HTML, YAML, Docker, Kubernetes**, and more!
 
-- 📜 **Line Numbers:** Always know where you are in your code.
-- 🖱️ **Mouse Support:** Scroll, click, and drag with ease.
-- 🎨 **Beautiful Colorscheme:** Enjoy the dark and pleasant Jellybeans theme.
-- ⚡ **Autocompletion:** Code faster with intelligent suggestions.
-- 🔍 **File Autocomplete:** Quickly find and import/export files.
-- 🌐 **Language Support:** Seamless coding in C, C++, Python, JavaScript, Django, .NET Core, ReactJS, AngularJS, and VueJS.
-- 💻 **Full-Stack Development:** Perfect for full-stack web development.
-- 🗃️ **Database Integration:** Work effortlessly with databases.
-- 🐞 **Debugging:** Powerful debugging tools for multiple languages.
-- 📂 **Multiple File Handling:** Open and manage multiple files like a pro.
-- 📁 **Collapsible File Tree:** Keep your workspace organized with a file stack view.
+---
 
-## Plugins Overview
+## ✨ Features
 
-| Plugin                                   | Purpose                                                                                                       | Related Commands                                               |
-|------------------------------------------|---------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------|
-| ryanoasis/vim-devicons                   | Provides file type icons for NERDTree and other plugins                                                       | -                                                             |
-| preservim/nerdtree                       | A file system explorer for Vim                                                                                | `:NERDTreeToggle` to toggle NERDTree                           |
-| vim-airline/vim-airline                  | A lightweight status/tabline plugin that displays useful information about the current buffer                  | -                                                             |
-| ctrlpvim/ctrlp.vim                       | A fuzzy file finder that makes it easy to navigate and open files in your project                             | `:CtrlP` to open CtrlP file finder                            |
-| powerline/powerline                      | A statusline plugin that provides a customizable and informative status line for Vim                          | -                                                             |
-| Shougo/denite.nvim                       | A versatile asynchronous fuzzy finder and many-to-many text filter engine                                     | `:Denite` to start Denite fuzzy finder                         |
-| Shougo/unite.vim                         | A plugin that provides a framework for searching and working with lists of items (files, buffers, tags, etc.) | `:Unite` to start Unite list view                              |
-| itchyny/lightline.vim                    | A light and configurable statusline/tabline for Vim                                                           | -                                                             |
-| mhinz/vim-startify                       | A plugin that provides a start screen for Vim with a list of recently opened files, bookmarks, and project files | -                                                             |
-| Shougo/vimfiler.vim                      | A file explorer plugin similar to NERDTree                                                                    | `:VimFilerToggle` to toggle VimFiler                           |
-| wsdjeg/vim-buffet                        | Provides improved buffer management and workspace control                                                     | -                                                             |
-| vim-scripts/flagship                     | Enhances the Vim statusline with additional context                                                           | -                                                             |
-| puremourning/vimspector                  | A multi-language debugging system for Vim                                                                     | `<F5>` to continue, `<F3>` to stop, `<F9>` to toggle breakpoint, `<F10>` to step over, `<F11>` to step into, `<F12>` to step out |
-| neoclide/coc.nvim                        | Intellisense engine for Vim8 & Neovim, supports multiple languages                                            | -                                                             |
-| dense-analysis/ale                       | A linter and fixer for various languages                                                                      | -                                                             |
+### 🎯 Language Support
+- **C/C++** - clangd LSP, debugging with lldb/gdb
+- **Python** - pyright LSP, debugpy debugging, virtual environment support
+- **C#/.NET** - omnisharp LSP, netcoredbg debugging
+- **JavaScript/TypeScript** - tsserver LSP, node debugging
+- **Java** - jdtls LSP, java-debug-adapter
+- **Go** - gopls LSP, delve debugging
+- **HTML/CSS** - html/cssls LSP, live preview
+- **YAML** - yamlls with Kubernetes schema support
+- **Docker** - dockerls LSP, syntax highlighting
+- **Bash** - bashls LSP, bash-debug-adapter
+- **Rust** - rust-analyzer (bonus!)
 
-## Areas for Improvement and Future Work
+### 🔥 Modern Features
+- ⚡ **Blazing Fast** - Lazy loading with lazy.nvim
+- 🎨 **Beautiful UI** - Catppuccin theme, lualine statusline, bufferline tabs
+- 🔍 **Fuzzy Finding** - Telescope for files, grep, buffers, and more
+- 📁 **File Explorer** - Neo-tree with git integration
+- 🐛 **Debugging** - Full DAP support for all languages
+- 📝 **Auto-completion** - nvim-cmp with LSP, snippets, and more
+- 🌳 **Treesitter** - Advanced syntax highlighting
+- 🔧 **Git Integration** - Gitsigns, Fugitive, LazyGit
+- 📦 **Package Management** - Mason for LSP servers and DAP adapters
+- ⌨️ **Smart Keybindings** - Which-key for discovering commands
 
-- 🛠️ **Custom Keybindings:** Enhance productivity with more custom keybindings.
-- 🌍 **Better Internationalization:** Improve support for non-English languages.
-- 📈 **Performance Optimization:** Speed up the loading and execution time.
-- 📦 **New Plugins:** Continuously add and configure new plugins to stay up-to-date.
-- 🧩 **Plugin Integration:** Ensure seamless integration and compatibility among all plugins.
-- 📚 **Documentation:** Create detailed documentation and tutorials for newcomers.
-- 🧪 **Testing Configurations:** Test configurations for different development environments.
+### 🎓 Beginner Friendly
+- 📚 **Comprehensive Documentation** - Complete guides for every language
+- 🎯 **One-Command Installation** - Works on Debian, Ubuntu, Kali, Arch, Garuda
+- 💡 **Interactive Help** - Press `<Space>` to see available commands
+- 📖 **Debugging Guides** - Step-by-step tutorials for each language
+- 🚀 **Quick Start Tutorial** - Get productive in 5 minutes
 
-## Vim Configuration
+---
 
-### `.vimrc` File
+## 📦 Installation
 
-```vim
-" ~/.vimrc
+### Quick Install (Automated)
 
-" Basic settings
-set number
-set mouse=a
-colorscheme jellybeans
-let g:jellybeans_use_term_italics = 1
-set guifont=Monaco:h10 noanti
-set encoding=UTF-8
+```bash
+# Clone the repository
+git clone https://github.com/your-username/Vim-Repo.git
+cd Vim-Repo
 
-" Load Pathogen
-execute pathogen#infect()
-execute pathogen#helptags()
-
-" Use Vim-Plug to manage plugins
-call plug#begin('~/.vim/plugged')
-
-" List of plugins managed by Vim-Plug
-Plug 'ryanoasis/vim-devicons'
-Plug 'preservim/nerdtree'
-Plug 'vim-airline/vim-airline'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'powerline/powerline'
-Plug 'Shougo/denite.nvim'
-Plug 'Shougo/unite.vim'
-Plug 'itchyny/lightline.vim'
-Plug 'mhinz/vim-startify'
-Plug 'Shougo/vimfiler.vim'
-Plug 'wsdjeg/vim-buffet'
-Plug 'vim-scripts/flagship'
-
-" Debugger plugins
-Plug 'puremourning/vimspector'
-
-" Language support
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'dense-analysis/ale'
-
-" Initialize plugin system
-call plug#end()
-
-" Enable Vimspector
-let g:vimspector_enable_mappings = 'HUMAN'
-
-" CoC (Conquer of Completion) configuration for language servers and debuggers
-let g:coc_global_extensions = [
-    \ 'coc-json',
-    \ 'coc-python',
-    \ 'coc-tsserver',
-    \ 'coc-clangd',
-    \ 'coc-omnisharp'
-\]
-
-" ALE (Asynchronous Lint Engine) configuration
-let g:ale_linters_explicit = 1
-let g:ale_linters = {
-\   'python': ['flake8', 'pylint'],
-\   'javascript': ['eslint'],
-\   'cpp': ['clang'],
-\   'c': ['clang'],
-\   'cs': ['omnisharp']
-\}
-
-" NERDTree settings
-map <C-n> :NERDTreeToggle<CR>
-autocmd vimenter * NERDTree
-
-" CtrlP settings
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-
-" Airline settings
-let g:airline_powerline_fonts = 1
-
-" Startify settings
-let g:startify_session_dir = '~/.vim/sessions'
-let g:startify_lists = [
-    \ { 'type': 'files', 'header': ['   Recent Files'] },
-    \ { 'type': 'sessions', 'header': ['   Sessions'] }
-\]
-
-" Lightline settings
-let g:lightline = {
-    \ 'colorscheme': 'wombat',
-    \ 'active': {
-    \   'left': [['mode', 'paste'], ['readonly', 'filename', 'modified']]
-    \ },
-    \ 'component_function': {
-    \   'filename': 'LightlineFilename'
-    \ }
-\}
-
-" Vimspector mappings
-nmap <F5> <Plug>VimspectorContinue
-nmap <F3> <Plug>VimspectorStop
-nmap <F9> <Plug>VimspectorToggleBreakpoint
-nmap <F10> <Plug>VimspectorStepOver
-nmap <F11> <Plug>VimspectorStepInto
-nmap <F12> <Plug>VimspectorStepOut
-
-" Other useful mappings
-nnoremap <silent> <leader>d :Denite file_rec<CR>
-nnoremap <silent> <leader>u :Unite file_rec<CR>
-
-" Autocommands to auto-load sessions
-augroup vimrc_autoload
-    autocmd!
-    autocmd VimEnter * if argc() == 0 | silent! source ~/.vim/sessions/default.vim | endif
-augroup END
-
-
+# Run the universal installer (detects your distro automatically)
+chmod +x install.sh
+./install.sh
 ```
-## How to Contribute
 
-If you have any recommendations or suggestions for improving my Vim configuration, feel free to open an issue or submit a pull request.
+### Supported Distributions
+- ✅ **Debian** (10, 11, 12)
+- ✅ **Ubuntu** (20.04, 22.04, 24.04)
+- ✅ **Kali Linux** (2023.x, 2024.x)
+- ✅ **Arch Linux**
+- ✅ **Garuda Linux** (Sway, Dragonized)
+- ✅ **Manjaro**
 
+### Manual Installation
+
+<details>
+<summary>Click to expand manual installation steps</summary>
+
+#### 1. Install Neovim (0.9+)
+```bash
+# Debian/Ubuntu/Kali
+sudo apt-get install neovim
+
+# Arch/Garuda/Manjaro
+sudo pacman -S neovim
+```
+
+#### 2. Install Dependencies
+```bash
+# See scripts/install-debian.sh or scripts/install-arch.sh
+# for complete dependency lists
+```
+
+#### 3. Copy Configuration
+```bash
+cp -r nvim ~/.config/
+```
+
+#### 4. Start Neovim
+```bash
+nvim
+# Plugins will auto-install on first launch
+```
+
+</details>
+
+---
+
+## 🎯 Quick Start
+
+### First Launch
+1. Open Neovim: `nvim`
+2. Wait for plugins to install (automatic)
+3. Run `:checkhealth` to verify installation
+4. Read the tutorial: `docs/BEGINNER_TUTORIAL.md`
+
+### Essential Keybindings
+
+| Key | Action |
+|-----|--------|
+| `<Space>` | Show all commands (Which-Key) |
+| `<Space>ff` | Find files (Telescope) |
+| `<Space>fg` | Find in files (Grep) |
+| `<Space>e` | Toggle file explorer |
+| `<F5>` | Start/Continue debugging |
+| `<F9>` | Toggle breakpoint |
+| `<F10>` | Step over (debug) |
+| `gd` | Go to definition |
+| `gr` | Find references |
+| `K` | Show documentation |
+
+📖 **Full keybindings**: [docs/KEYBINDINGS.md](docs/KEYBINDINGS.md)
+
+---
+
+## 📚 Documentation
+
+### General
+- [Installation Guide](docs/INSTALLATION.md) - Detailed installation instructions
+- [Keybindings Reference](docs/KEYBINDINGS.md) - All shortcuts and commands
+- [Beginner Tutorial](docs/BEGINNER_TUTORIAL.md) - Start here if new to Neovim!
+
+### Language-Specific Guides
+Each guide includes setup, commands, debugging, and workflows:
+
+- [C/C++ Development](docs/languages/C_CPP.md)
+- [Python Development](docs/languages/PYTHON.md)
+- [C#/.NET Development](docs/languages/CSHARP.md)
+- [JavaScript/Node.js](docs/languages/JAVASCRIPT.md)
+- [Java Development](docs/languages/JAVA.md)
+- [Go Development](docs/languages/GO.md)
+- [Web Development (HTML/CSS)](docs/languages/WEB.md)
+- [DevOps (Docker/Kubernetes)](docs/languages/DEVOPS.md)
+
+### Plugin Documentation
+- [LSP Configuration](nvim/lua/plugins/lsp.lua) - Language server setup
+- [DAP Configuration](nvim/lua/plugins/dap.lua) - Debugging setup
+- [Plugin List](nvim/lua/plugins/init.lua) - All installed plugins
+
+---
+
+## 🎨 Screenshots
+
+### Dashboard
+Beautiful start screen with quick actions
+
+### File Explorer (Neo-tree)
+Modern file tree with git status
+
+### Debugging (DAP UI)
+Professional debugging interface
+
+### Code Completion
+Intelligent auto-completion with LSP
+
+---
+
+## 🛠️ Customization
+
+### Change Colorscheme
+```lua
+-- Edit nvim/lua/plugins/init.lua
+-- Line ~12: Change "catppuccin" to:
+-- "tokyonight", "nightfox", or "kanagawa"
+```
+
+### Add Custom Keybindings
+```lua
+-- Edit nvim/lua/core/keymaps.lua
+-- Add your custom mappings
+vim.keymap.set("n", "<leader>x", ":YourCommand<CR>", { desc = "Your description" })
+```
+
+### Install Additional LSP Servers
+```vim
+:Mason
+# Press 'i' on any server to install
+```
+
+---
+
+## 🐛 Debugging Setup
+
+### Per-Language Debugging
+
+<details>
+<summary><b>C/C++</b></summary>
+
+```bash
+# Compile with debug symbols
+gcc -g myprogram.c -o myprogram
+
+# Open in Neovim
+nvim myprogram.c
+
+# Press F9 to set breakpoint
+# Press F5 to start debugging
+```
+</details>
+
+<details>
+<summary><b>Python</b></summary>
+
+```bash
+# Open your Python file
+nvim script.py
+
+# Press F9 to set breakpoint
+# Press F5 to start debugging
+# Automatically detects virtual environment
+```
+</details>
+
+<details>
+<summary><b>JavaScript/Node.js</b></summary>
+
+```bash
+# Open your JS file
+nvim app.js
+
+# Press F9 to set breakpoint
+# Press F5 to start debugging
+```
+</details>
+
+📖 **Full debugging guides**: See [docs/languages/](docs/languages/) for each language
+
+---
+
+## 🔧 Troubleshooting
+
+### Plugins Not Loading
+```vim
+:Lazy sync
+```
+
+### LSP Not Working
+```vim
+:Mason
+:LspInfo
+:checkhealth
+```
+
+### Performance Issues
+```lua
+-- Disable some features in nvim/lua/core/options.lua
+-- See Performance section in docs/INSTALLATION.md
+```
+
+### More Help
+- Run `:checkhealth` for diagnostics
+- Check [docs/INSTALLATION.md](docs/INSTALLATION.md)
+- Open an issue on GitHub
+
+---
+
+## 📋 Requirements
+
+### Minimum
+- Neovim 0.9+
+- Git
+- A C compiler (gcc/clang)
+- Node.js 16+ (for LSP servers)
+
+### Recommended
+- Neovim 0.10+
+- Nerd Font (for icons)
+- ripgrep (for fast grep)
+- fd (for fast file finding)
+- LazyGit (for git UI)
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to:
+- Report bugs
+- Suggest features
+- Submit pull requests
+- Improve documentation
+
+---
+
+## 📝 License
+
+MIT License - feel free to use and modify!
+
+---
+
+## 🙏 Credits
+
+Built with these amazing projects:
+- [Neovim](https://neovim.io/)
+- [lazy.nvim](https://github.com/folke/lazy.nvim)
+- [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
+- [nvim-dap](https://github.com/mfussenegger/nvim-dap)
+- [Telescope](https://github.com/nvim-telescope/telescope.nvim)
+- [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- And many more! See [nvim/lua/plugins/init.lua](nvim/lua/plugins/init.lua)
+
+---
+
+## ⭐ Show Your Support
+
+If this configuration helped you, please:
+- ⭐ Star this repository
+- 🐛 Report bugs
+- 📖 Improve documentation
+- 💡 Share with others
+
+---
+
+<div align="center">
+
+**Happy Coding! 🚀**
+
+Made with ❤️ for developers who love the terminal
+
+</div>
