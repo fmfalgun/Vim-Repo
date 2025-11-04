@@ -95,6 +95,17 @@ opt.showcmd = true                      -- Show partial commands
 opt.ruler = true                        -- Show cursor position
 opt.confirm = true                      -- Confirm before closing unsaved
 opt.virtualedit = "block"               -- Allow cursor in block mode
+opt.conceallevel = 0                    -- Don't hide special chars (for markdown, json)
+opt.title = true                        -- Set terminal title
+opt.titlestring = "%<%F - nvim"         -- Terminal title format
+
+-- ============================================================================
+-- AUTO-COMPLETION & SUGGESTIONS
+-- ============================================================================
+opt.completeopt = "menu,menuone,noselect,noinsert"  -- Enhanced completion options
+opt.shortmess:append("c")               -- Don't show completion messages
+opt.pumblend = 10                       -- Popup menu transparency
+opt.winblend = 10                       -- Floating window transparency
 
 -- Create undo directory if it doesn't exist
 local undo_dir = vim.fn.stdpath("data") .. "/undo"

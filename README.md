@@ -32,6 +32,7 @@ Transform your Neovim into a powerful IDE with support for **C, C++, Python, C#,
 - 📁 **File Explorer** - Neo-tree with git integration
 - 🐛 **Debugging** - Full DAP support for all languages
 - 📝 **Auto-completion** - nvim-cmp with LSP, snippets, and more
+- 🤖 **AI Coding Assistants** - Codeium, Ollama, GitHub Copilot support
 - 🌳 **Treesitter** - Advanced syntax highlighting
 - 🔧 **Git Integration** - Gitsigns, Fugitive, LazyGit
 - 📦 **Package Management** - Mason for LSP servers and DAP adapters
@@ -136,6 +137,7 @@ nvim
 - [Installation Guide](docs/INSTALLATION.md) - Detailed installation instructions
 - [Keybindings Reference](docs/KEYBINDINGS.md) - All shortcuts and commands
 - [Beginner Tutorial](docs/BEGINNER_TUTORIAL.md) - Start here if new to Neovim!
+- [AI Coding Assistants](docs/AI_ASSISTANTS.md) - Setup and use AI-powered coding
 
 ### Language-Specific Guides
 Each guide includes setup, commands, debugging, and workflows:

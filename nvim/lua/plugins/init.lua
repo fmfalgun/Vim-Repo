@@ -456,6 +456,16 @@ require("lazy").setup({
     ft = { "dockerfile", "yaml", "yml" },
   },
 
+  -- ============================================================================
+  -- AI CODING ASSISTANTS
+  -- ============================================================================
+  -- Uncomment the line below to enable AI assistants (after setup)
+  -- Run: ./scripts/setup-ai-assistant.sh
+  -- Docs: docs/AI_ASSISTANTS.md
+  --
+  -- Then uncomment this line:
+  -- require("plugins.ai.init"),
+
 }, {
   -- Lazy.nvim configuration
   ui = {
